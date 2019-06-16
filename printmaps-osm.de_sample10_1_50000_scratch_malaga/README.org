@@ -1,0 +1,192 @@
+* How to generate a printable map with printmaps-osm.de
+
+This is a quick dirty guide on what I have done so far.
+
+What works:
+- Map generation
+- Legend
+- Scale bar
+- Grids (not sure if they are correctly aligned with an universal reference though)
+
+What doesn't works:
+- Grid labels in MGRS
+- Grid labels in UTMREF
+
+TODOs:
+- [ ]: Write a lua script for MGRS
+- [ ]: Write a lua script for UMTREF
+
+** Clone this repo if you haven't yet
+#+begin_src shell
+  git clone https://github.com/vonpupp/myexamples.printmaps-osm.de
+  cd myexamples.printmaps-osm.de
+#+end_src
+
+** Install the CLI tool
+#+begin_src shell
+  wget http://printmaps-osm.de:8080/files/printmaps_linux_amd64.tar.gz
+  tar xvf printmaps_linux_amd64.tar.gz
+  # Alternatively create a symbolic link
+  # ln -sf ../printmaps .
+#+end_src
+
+** Create a template
+#+begin_src shell
+  ./printmaps template
+#+end_src
+
+** Adjust default page size to A4
+#+begin_src shell
+  sed -i -e 's/420/297/g' map.yaml
+  sed -i -e 's/400/277/g' map.yaml
+  sed -i -e 's/594/210/g' map.yaml
+  sed -i -e 's/574/190/g' map.yaml
+  sed -i -e 's/530/146/g' map.yaml
+#+end_src
+
+** Change map values
+- latitude
+- longitude
+- scale
+- title
+- legend
+- swap "UserObjects" and "UserFiles" so "UserObjects" is at the END of the file
+
+** Setting up margins
+#+begin_src bash
+  VALUE=./printmaps passepartout 297.0 210.0 20.0 20.0 20.0 20.0 | sed '1,6d' | sed -n '1p'
+  $ FRAME=$(cat <<EOF
+  # frame
+  - Style: <PolygonSymbolizer fill='white' fill-opacity='1.0' />
+    WellKnownText: $VALUE
+  EOF
+  )
+  echo $FRAME
+#+end_src
+
+Only use the first value of the passepartout command or copy the command above
+
+#+begin_src bash
+  VALUE=$(printmaps passepartout 297.0 210.0 20.0 20.0 20.0 20.0 | sed '1,6d' | sed -n '5p')
+  $ BORDER=$(cat <<EOF
+  # border (around map area)
+  - Style: <LineSymbolizer stroke='dimgray' stroke-width='1.0' stroke-linecap='square' />
+    WellKnownText: $VALUE
+  EOF
+  )
+  echo $BORDER
+#+end_src
+
+Only use the last value of the passepartout command or copy the command above
+
+
+** Download shapes
+- Find the grid shapes according to the map needs
+- Reference the shapes on the map.yaml file
+
+#+begin_src bash
+  firefox "https://earth-info.nga.mil/GandG/coordsys/grids/mgrs_100km_dloads.html"
+#+end_src
+
+Here is an example of grid 30S (could be several depending on the map size)
+#+begin_src bash
+  mv ~/Downloads/MGRS_100kmSQ_ID_30S.zip .
+  unzip MGRS_100kmSQ_ID_30S.zip
+  mv Shapefiles/100kmSQ_ID_set6/Zone30/n/* .
+  /sbin/rm -rf Shapefiles
+#+end_src
+
+** Generate scale bar
+Use lat and long of the map on 90° over 1000 meters
+- Generate the scale bar
+- Reference the scale bar on the map.yaml file
+
+#+begin_src bash
+  ./printmaps bearingline 36.675 -4.44 90.0 1000.0 "1000 Meter" scalebar-1000
+#+end_src
+
+** Upload and get the API state
+#+begin_src shell
+  ./upload.sh
+  ./printmaps state > state.txt
+#+end_src
+
+** Grid setup
+
+*** Understanding utmgrids from another example (optional)
+I used the original sample10.zip utmgrid helper as an example to understand the process:
+#+begin_src bash
+  ./printmaps utmgrid "32 North 380000 5300000" "32 North 440000 5400000" 1000
+#+end_src
+
+Access on 2 tabs the following site
+#+begin_src bash
+  firefox "https://www.movable-type.co.uk/scripts/latlong-utm-mgrs.html"
+  firefox "https://www.movable-type.co.uk/scripts/latlong-utm-mgrs.html"
+#+end_src
+
+- Use UTM "32 North 380000 5300000" on the first tab
+- Use UTM "32 North 440000 5400000" on the second tab
+- I noticed it defined the extremes of a rectangle and it got converted to
+  lat and long
+
+*** Computing the current utmgrids
+This section can be divided in two macro sections
+- Generate the utmgrids
+- Reference the grids on the map.yaml file
+
+With the previous knowledge, I can use lat and long, min and max given by:
+#+begin_src bash
+  ./printmaps state:
+#+end_src
+
+For example:
+#+BEGIN_EXAMPLE
+"MapBuildBoxWGS84": {
+    "LonMin": -4.45919095223,
+    "LatMin": 36.6628374001,
+    "LonMax": -4.29280904777,
+    "LatMax": 36.7571336705
+}
+#+END_EXAMPLE
+
+- So I used:
+  - min (tab 1): 36.662837400° N, -4.45919095223° W
+    - UTM: 30 N 369592 4058463
+    - Military: 30S UF 69591 58462
+  - max (tab 2): 36.7571336705° N, -4.29280904777° W
+    - UTM: 30 N 384603 4068710
+    - Military: 30S UF 84603 68710
+- With those values, I constructed the appropriate utmgrid command:
+
+#+begin_src bash
+  ./printmaps utmgrid "30 N 369592 4058463" "30 N 384603 4068710" 1000
+#+end_src
+
+** Generate the grid labels
+It is important that the "UserObjects" is at the END of the file for the pipe to work correctly
+
+#+begin_src bash
+  ./printmaps runlua gridlabels.lua | sed 1,6d >> map.yaml
+#+end_src
+
+** Upload final data to server
+#+begin_src shell
+  ./upload.sh
+#+end_src
+
+** Wait a little
+
+** Download the map
+#+begin_src shell
+  ./download
+#+end_src
+
+* Vars
+#+STARTUP: indent
+# Local Variables:
+# mode: org
+# eval: (flyspell-mode 1)
+# ispell-local-dictionary: "en_US"
+# eval: (flyspell-buffer)
+# End:

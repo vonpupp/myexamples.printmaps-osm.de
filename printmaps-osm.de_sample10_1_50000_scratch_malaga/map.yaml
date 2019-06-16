@@ -59,16 +59,14 @@
 #   ./printmaps utmgrid "30 N 369592 4058463" "30 N 384603 4068710" 1000
 #
 # Change the title
-# Use the smaler
 #
 # Change copyright
-# Edit the text
 #
 # Scale bar: Use lat and long of the map on 90° over 1000 meters
 # ./printmaps bearingline 36.675 -4.44 90.0 1000.0 "1000 Meter" scalebar-1000
 #
 # Grid labels
-# ./printmaps runlua gridlabels.lua | sed 1,6d >> map.yaml 
+# ./printmaps runlua gridlabels.lua | sed 1,6d >> map.yaml
 #
 # How to use the compass with the computer monitor
 # Use deepin viewer at 41% zoom (about 1 or two scrolls after 40%)
