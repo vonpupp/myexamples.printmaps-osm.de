@@ -1,5 +1,78 @@
 # map definition file
 # -------------------
+
+# Documentation
+# -------------
+# Read: http://printmaps-osm.de:8080/client.html
+#
+# ln -sf ../../../printmaps printmaps
+# ./printmaps template
+# %s/420/297
+# %s/400/277
+# %s/594/210
+# %s/574/190
+# %s/530/146
+# Edit
+# ./upload.sh
+# Wait for a little until data is shown and status is 200 OK
+# ./printmaps state > state.txt
+# ./download
+#
+# Setting up margins
+# printmaps passepartout 297.0 210.0 20.0 20.0 20.0 20.0
+# Add first and last value to the frame and border sections
+#
+# Downloading shapes
+# Firefox "https://earth-info.nga.mil/GandG/coordsys/grids/mgrs_100km_dloads.html"
+# Download grid 30S
+# mv ~/Downloads/MGRS_100kmSQ_ID_30S.zip .
+# unzip MGRS_100kmSQ_ID_30S.zip
+# mv Shapefiles/100kmSQ_ID_set6/Zone30/n/* .
+# /sbin/rm -rf Shapefiles
+#
+# Setting up grid
+# I used the original sample10.zip utmgrid commandline as an example to reverse
+# and understand the process:
+#   ./printmaps utmgrid "32 North 380000 5300000" "32 North 440000 5400000" 1000
+# - I accessed the site https://www.movable-type.co.uk/scripts/latlong-utm-mgrs.html
+#   on 2 tabs
+# - Used UTM "32 North 380000 5300000" on the first tab
+# - Used UTM "32 North 440000 5400000" on the second tab
+# - I noticed it defined the extremes of a rectangle and it got converted to
+#   lat and long
+# - Knowing that I did the oposite using the lat,long min and max given by:
+#   ./printmaps state:
+# "MapBuildBoxWGS84": {
+#     "LonMin": -4.45919095223,
+#     "LatMin": 36.6628374001,
+#     "LonMax": -4.29280904777,
+#     "LatMax": 36.7571336705
+# }
+# - So I used:
+#   - min (tab 1): 36.662837400° N, -4.45919095223° W
+#     - UTM: 30 N 369592 4058463
+#     - Military: 30S UF 69591 58462
+#   - max (tab 2): 36.7571336705° N, -4.29280904777° W
+#     - UTM: 30 N 384603 4068710
+#     - Military: 30S UF 84603 68710
+# - With those values, I constructed the appropriate utmgrid command:
+#   ./printmaps utmgrid "30 N 369592 4058463" "30 N 384603 4068710" 1000
+#
+# Change the title
+# Use the smaler
+#
+# Change copyright
+# Edit the text
+#
+# Scale bar
+# - Use lat and long of the map on 90° over 1000 meters
+#   ./printmaps bearingline 36.675 -4.44 90.0 1000.0 "1000 Meter" scalebar-1000
+#
+# Grid labels
+# printmaps runlua gridlabels.lua
+#
+# How to use the compass with the computer monitor
+# Use deepin viewer at 41% zoom (about 1 or two scrolls after 40%)
 # general hint for this yaml config file:
 # - do not use tabs or unnecessary white spaces
 #
@@ -96,6 +169,25 @@ Projection: 3857
 # e.g. hide highway shields: roads-text-ref-low-zoom,roads-text-ref
 # e.g. hide aera texts: text-poly-low-zoom,text-poly
 HideLayers: admin-low-zoom,admin-mid-zoom,admin-high-zoom,admin-text,nature-reserve-boundaries,nature-reserve-text
+
+
+# user files to upload
+# --------------------
+
+UserFiles:
+# 'track'
+#- mytrack.gpx
+# 'scale bar'
+- scalebar-1000.geojson
+- utmlatgrid1000.geojson
+- utmlongrid1000.geojson
+- MGRS_100kmSQ_ID_30S.sbx
+- MGRS_100kmSQ_ID_30S.shp
+- MGRS_100kmSQ_ID_30S.shp.xml
+- MGRS_100kmSQ_ID_30S.shx
+- MGRS_100kmSQ_ID_30S.dbf
+- MGRS_100kmSQ_ID_30S.prj
+- MGRS_100kmSQ_ID_30S.sbn
 
 # user defined objects (optional, draw order remains)
 # ---------------------------------------------------
@@ -205,6 +297,15 @@ UserObjects:
 - Style: <TextSymbolizer fontset-name='fontset-0' size='12' fill='dimgray' orientation='90' allow-overlap='true'>'Map data © OpenStreetMap contributors  ·  Date 2019/06/16'</TextSymbolizer>
   WellKnownText: POINT(290.5 105.0)
 
+# scale bar (use always stroke-linecap='butt')
+- Style: |
+         <LineSymbolizer stroke='dimgray' stroke-width='4.0' stroke-linecap='butt' />
+         <TextSymbolizer fontset-name='fontset-2' size='12' fill='dimgray' placement='line' dy='-5' allow-overlap='true'>[name]</TextSymbolizer>
+  SRS: '+init=epsg:4326'
+  Type: ogr
+  File: scalebar-1000.geojson
+  Layer: OGRGeoJSON
+
 # title
 #- Style: <TextSymbolizer fontset-name='fontset-2' size='100' fill='dimgray' opacity='0.2' allow-overlap='true'>'Sylt'</TextSymbolizer>
 #  WellKnownText: POINT(90.0 146.0)
@@ -213,84 +314,4 @@ UserObjects:
 #- Style: <TextSymbolizer fontset-name='fontset-0' size='12' fill='dimgray' orientation='90' allow-overlap='true'>'© Vonpupp'</TextSymbolizer>
 #  WellKnownText: POINT(10.0 297)
 
-# user files to upload
-# --------------------
-
-UserFiles:
-# 'track'
-#- mytrack.gpx
-# 'scale bar'
-#- scalebar-2000.geojson
-- utmlatgrid1000.geojson
-- utmlongrid1000.geojson
-- MGRS_100kmSQ_ID_30S.sbx
-- MGRS_100kmSQ_ID_30S.shp
-- MGRS_100kmSQ_ID_30S.shp.xml
-- MGRS_100kmSQ_ID_30S.shx
-- MGRS_100kmSQ_ID_30S.dbf
-- MGRS_100kmSQ_ID_30S.prj
-- MGRS_100kmSQ_ID_30S.sbn
-
-# Documentation
-# -------------
-# ln -sf ../../../printmaps printmaps
-# ./printmaps template
-# %s/420/297
-# %s/400/277
-# %s/594/210
-# %s/574/190
-# %s/530/146
-# Edit
-# ./upload.sh
-# Wait for a little until data is shown and status is 200 OK
-# ./printmaps state > state.txt
-# ./download
-#
-# Setting up margins
-# printmaps passepartout 297.0 210.0 20.0 20.0 20.0 20.0
-# Add first and last value to the frame and border sections
-#
-# Downloading shapes
-# Firefox "https://earth-info.nga.mil/GandG/coordsys/grids/mgrs_100km_dloads.html"
-# Download grid 30S
-# mv ~/Downloads/MGRS_100kmSQ_ID_30S.zip .
-# unzip MGRS_100kmSQ_ID_30S.zip
-# mv Shapefiles/100kmSQ_ID_set6/Zone30/n/* .
-# /sbin/rm -rf Shapefiles
-#
-# Setting up grid
-# I used the original sample10.zip utmgrid commandline as an example to reverse
-# and understand the process:
-#   ./printmaps utmgrid "32 North 380000 5300000" "32 North 440000 5400000" 1000
-# - I accessed the site https://www.movable-type.co.uk/scripts/latlong-utm-mgrs.html
-#   on 2 tabs
-# - Used UTM "32 North 380000 5300000" on the first tab
-# - Used UTM "32 North 440000 5400000" on the second tab
-# - I noticed it defined the extremes of a rectangle and it got converted to
-#   lat and long
-# - Knowing that I did the oposite using the lat,long min and max given by:
-#   ./printmaps state:
-# "MapBuildBoxWGS84": {
-#     "LonMin": -4.45919095223,
-#     "LatMin": 36.6628374001,
-#     "LonMax": -4.29280904777,
-#     "LatMax": 36.7571336705
-# }
-# - So I used:
-#   - min (tab 1): 36.662837400° N, -4.45919095223° W
-#     - UTM: 30 N 369592 4058463
-#     - Military: 30S UF 69591 58462
-#   - max (tab 2): 36.7571336705° N, -4.29280904777° W
-#     - UTM: 30 N 384603 4068710
-#     - Military: 30S UF 84603 68710
-# - With those values, I constructed the appropriate utmgrid command:
-#   ./printmaps utmgrid "30 N 369592 4058463" "30 N 384603 4068710" 1000
-#
-# Change the title
-# Use the smaler
-#
-# Change copyright
-# Edit the text
-#
-# How to use the compass with the computer monitor
-# Use deepin viewer at 41% zoom (about 1 or two scrolls after 40%)
+# lua grid line labels
