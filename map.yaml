@@ -21,9 +21,9 @@
 # - RasterSymbolizer (https://github.com/mapnik/mapnik/wiki/RasterSymbolizer)
 # - ShieldSymbolizer (https://github.com/mapnik/mapnik/wiki/ShieldSymbolizer)
 #
-# purpose: 
-# author : 
-# release: 
+# purpose:
+# author :
+# release:
 #
 # frame (2 + 18 = bleed + frame): generate frame and border
 # - printmaps passepartout 420.0 594.0 20.0 20.0 20.0 20.0
@@ -45,7 +45,7 @@
 ServiceURL: http://printmaps-osm.de:8282/api/beta2/maps/
 
 # proxy configuration (not to be done here)
-# - set the environment variable $HTTP_PROXY on your local system 
+# - set the environment variable $HTTP_PROXY on your local system
 # - e.g. export HTTP_PROXY=http://user:password@proxy.server:port
 
 # essential map attributes (required)
@@ -58,12 +58,12 @@ Fileformat: png
 Scale: 50000
 
 # width and height (millimeter, e.g. 609.6)
-PrintWidth: 420.0
-PrintHeight: 594.0
+PrintWidth: 210.0
+PrintHeight: 297.0
 
 # center coordinates (decimal degrees, e.g. 51.9506)
-Latitude: 54.94
-Longitude: 8.39
+Latitude: 36.720232
+Longitude: -4.355970
 
 # style / design (osm-carto, osm-carto-mono, osm-carto-ele20, schwarzplan, schwarzplan+, raster10, transparent)
 # osm-carto: OpenStreetMap Carto Style
@@ -74,7 +74,7 @@ Longitude: 8.39
 # raster10: Map canvas divided into a 10x10 raster
 # transparent: Transparent map canvas
 # request service capabilities to get a list of all available map styles
-Style: osm-carto
+Style: osm-carto-ele20
 
 # map projection, EPSG code as number (without prefix "EPSG:")
 # e.g. 3857 (EPSG:3857 / WGS84 / Web Mercator) (used by Google/Bing/OpenStreetMap)
@@ -136,7 +136,7 @@ UserObjects:
 #  Layer: OGRGeoJSON
 
 # frame
-- Style: <PolygonSymbolizer fill='white' fill-opacity='1.0' /> 
+- Style: <PolygonSymbolizer fill='white' fill-opacity='1.0' />
   WellKnownText: POLYGON((0.0 0.0, 0.0 594.0, 420.0 594.0, 420.0 0.0, 0.0 0.0), (20.0 20.0, 20.0 574.0, 400.0 574.0, 400.0 20.0, 20.0 20.0))
 
 # border (around map area)
