@@ -190,7 +190,7 @@ UserObjects:
 # Convergence Angle: 0° 49.38' West (Meridian)
 
 # main title (top)
-- Style: <TextSymbolizer fontset-name='fontset-2' size='12' fill='dimgray' allow-overlap='true'>'OSM  ·  Malaga  ·  ?40x40km?  ·  1:50000  ·  Zone fields \[30S\]  ·  ?Reporting squares \[UF\]'</TextSymbolizer>
+- Style: <TextSymbolizer fontset-name='fontset-2' size='12' fill='dimgray' allow-overlap='true'>'OSM  ·  Malaga  ·  ?40x40km?  ·  1:50000  ·  Zone fields 30S  ·  ?Reporting squares UF'</TextSymbolizer>
   WellKnownText: POINT(148.5 203.5)
 
 # technical map parameters (bottom)
@@ -291,3 +291,6 @@ UserFiles:
 #
 # Change copyright
 # Edit the text
+#
+# How to use the compass with the computer monitor
+# Use deepin viewer at 41% zoom (about 1 or two scrolls after 40%)
