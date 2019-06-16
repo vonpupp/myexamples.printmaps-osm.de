@@ -79,7 +79,6 @@ Only use the first value of the passepartout command or copy the command above
 
 Only use the last value of the passepartout command or copy the command above
 
-
 ** Download shapes
 - Find the grid shapes according to the map needs
 - Reference the shapes on the map.yaml file
@@ -182,7 +181,6 @@ It is important that the "UserObjects" is at the END of the file for the pipe to
   ./download
 #+end_src
 
-* Vars
 #+STARTUP: indent
 # Local Variables:
 # mode: org
