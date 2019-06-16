@@ -1,0 +1,214 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -4.459189566320366,
+            36.66284133214292
+          ],
+          [
+            -4.291266324596858,
+            36.66478063091799
+          ]
+        ]
+      },
+      "properties": {
+        "name": "easting  4058463"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -4.459359747121804,
+            36.67185333556849
+          ],
+          [
+            -4.2914169351711315,
+            36.67379326734931
+          ]
+        ]
+      },
+      "properties": {
+        "name": "easting  4059463"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -4.4595300035792365,
+            36.68086532464469
+          ],
+          [
+            -4.291567612706157,
+            36.68280588957652
+          ]
+        ]
+      },
+      "properties": {
+        "name": "easting  4060463"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -4.459700335727452,
+            36.68987729936987
+          ],
+          [
+            -4.291718357232728,
+            36.69181849759807
+          ]
+        ]
+      },
+      "properties": {
+        "name": "easting  4061463"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -4.459870743601261,
+            36.698889259742394
+          ],
+          [
+            -4.29186916878166,
+            36.700831091412404
+          ]
+        ]
+      },
+      "properties": {
+        "name": "easting  4062463"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -4.4600412272355,
+            36.70790120576063
+          ],
+          [
+            -4.292020047383792,
+            36.70984367101797
+          ]
+        ]
+      },
+      "properties": {
+        "name": "easting  4063463"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -4.460211786665031,
+            36.71691313742295
+          ],
+          [
+            -4.292170993069981,
+            36.71885623641323
+          ]
+        ]
+      },
+      "properties": {
+        "name": "easting  4064463"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -4.46038242192474,
+            36.7259250547277
+          ],
+          [
+            -4.292322005871111,
+            36.72786878759662
+          ]
+        ]
+      },
+      "properties": {
+        "name": "easting  4065463"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -4.460553133049536,
+            36.73493695767328
+          ],
+          [
+            -4.292473085818083,
+            36.73688132456658
+          ]
+        ]
+      },
+      "properties": {
+        "name": "easting  4066463"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -4.460723920074356,
+            36.74394884625803
+          ],
+          [
+            -4.292624232941823,
+            36.74589384732158
+          ]
+        ]
+      },
+      "properties": {
+        "name": "easting  4067463"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -4.460894783034158,
+            36.752960720480324
+          ],
+          [
+            -4.292775447273278,
+            36.75490635586007
+          ]
+        ]
+      },
+      "properties": {
+        "name": "easting  4068463"
+      }
+    }
+  ]
+}

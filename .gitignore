@@ -1,6 +1,6 @@
 printmaps
 map.id
-printmaps.zip
-printmaps.png
-printmaps.svg
+*.zip
+*.png
+*.svg
 state.txt

@@ -1,0 +1,309 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -4.459189566320366,
+            36.66284133214292
+          ],
+          [
+            -4.460936997883594,
+            36.755186651201164
+          ]
+        ]
+      },
+      "properties": {
+        "name": "369592  northing"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -4.448003394440013,
+            36.662977881638774
+          ],
+          [
+            -4.449737441649752,
+            36.75532365789141
+          ]
+        ]
+      },
+      "properties": {
+        "name": "370592  northing"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -4.436817147633022,
+            36.66311338096012
+          ],
+          [
+            -4.4385378101344815,
+            36.75545961089255
+          ]
+        ]
+      },
+      "properties": {
+        "name": "371592  northing"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -4.425630826477347,
+            36.66324783008491
+          ],
+          [
+            -4.427338103918472,
+            36.75559451018245
+          ]
+        ]
+      },
+      "properties": {
+        "name": "372592  northing"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -4.414444431550969,
+            36.66338122899129
+          ],
+          [
+            -4.416138323582435,
+            36.755728355739116
+          ]
+        ]
+      },
+      "properties": {
+        "name": "373592  northing"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -4.403257963431892,
+            36.663513577657554
+          ],
+          [
+            -4.404938469707108,
+            36.755861147540756
+          ]
+        ]
+      },
+      "properties": {
+        "name": "374592  northing"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -4.392071422698142,
+            36.66364487606217
+          ],
+          [
+            -4.393738542873254,
+            36.755992885565725
+          ]
+        ]
+      },
+      "properties": {
+        "name": "375592  northing"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -4.380884809927773,
+            36.663775124183786
+          ],
+          [
+            -4.3825385436616555,
+            36.75612356979258
+          ]
+        ]
+      },
+      "properties": {
+        "name": "376592  northing"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -4.369698125698858,
+            36.663904322001216
+          ],
+          [
+            -4.371338472653122,
+            36.7562532002
+          ]
+        ]
+      },
+      "properties": {
+        "name": "377592  northing"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -4.358511370589496,
+            36.66403246949346
+          ],
+          [
+            -4.3601383304284855,
+            36.75638177676689
+          ]
+        ]
+      },
+      "properties": {
+        "name": "378592  northing"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -4.347324545177807,
+            36.664159566639675
+          ],
+          [
+            -4.348938117568601,
+            36.7565092994723
+          ]
+        ]
+      },
+      "properties": {
+        "name": "379592  northing"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -4.336137650041937,
+            36.66428561341919
+          ],
+          [
+            -4.337737834654348,
+            36.75663576829546
+          ]
+        ]
+      },
+      "properties": {
+        "name": "380592  northing"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -4.32495068576005,
+            36.664410609811505
+          ],
+          [
+            -4.326537482266627,
+            36.756761183215765
+          ]
+        ]
+      },
+      "properties": {
+        "name": "381592  northing"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -4.313763652910337,
+            36.6645345557963
+          ],
+          [
+            -4.315337060986361,
+            36.756885544212786
+          ]
+        ]
+      },
+      "properties": {
+        "name": "382592  northing"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -4.30257655207101,
+            36.66465745135341
+          ],
+          [
+            -4.304136571394499,
+            36.75700885126627
+          ]
+        ]
+      },
+      "properties": {
+        "name": "383592  northing"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -4.291389383820301,
+            36.66477929646288
+          ],
+          [
+            -4.292936014072008,
+            36.75713110435615
+          ]
+        ]
+      },
+      "properties": {
+        "name": "384592  northing"
+      }
+    }
+  ]
+}
