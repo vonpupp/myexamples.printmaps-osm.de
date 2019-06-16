@@ -29,7 +29,7 @@
 # - printmaps passepartout 297.0 210.0 20.0 20.0 20.0 20.0
 #
 # crop marks: generate crop marks for all four corners
-# - printmaps cropmarks 420.0 594.0 5.0
+# - printmaps cropmarks 297.0 210.0 5.0
 #
 # scale bar: generate scale bar (nature length 2000 meters)
 # - printmaps bearingline 54.82 8.50 90.0 2000.0 "2000 Meter" scalebar-2000
@@ -145,11 +145,11 @@ UserObjects:
 
 # crop marks (only the half line width is visible)
 - Style: <LineSymbolizer stroke='dimgray' stroke-width='1.5' stroke-linecap='square' />
-  WellKnownText: MULTILINESTRING((5.0 0.0, 0.0 0.0, 0.0 5.0), (5.0 594.0, 0.0 594.0, 0.0 589.0), (415.0 594.0, 420.0 594.0, 420.0 589.0), (415.0 0.0, 420.0 0.0, 420.0 5.0))
+  WellKnownText: MULTILINESTRING((5.0 0.0, 0.0 0.0, 0.0 5.0), (5.0 210.0, 0.0 210.0, 0.0 205.0), (292.0 210.0, 297.0 210.0, 297.0 205.0), (292.0 0.0, 297.0 0.0, 297.0 5.0))
 
 # title
 - Style: <TextSymbolizer fontset-name='fontset-2' size='100' fill='dimgray' opacity='0.2' allow-overlap='true'>'Sylt'</TextSymbolizer>
-  WellKnownText: POINT(90.0 277.0)
+  WellKnownText: POINT(90.0 146.0)
 
 # copyright
 - Style: <TextSymbolizer fontset-name='fontset-0' size='12' fill='dimgray' orientation='90' allow-overlap='true'>'© Vonpupp'</TextSymbolizer>
@@ -168,6 +168,11 @@ UserFiles:
 # -------------
 # ln -sf ../../../printmaps printmaps
 # ./printmaps template
+# %s/420/297
+# %s/400/277
+# %s/594/210
+# %s/574/190
+# %s/530/146
 # Edit
 # ./upload.sh
 # Wait for a little until data is shown and status is 200 OK
