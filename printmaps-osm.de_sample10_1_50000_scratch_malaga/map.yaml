@@ -64,12 +64,11 @@
 # Change copyright
 # Edit the text
 #
-# Scale bar
-# - Use lat and long of the map on 90° over 1000 meters
-#   ./printmaps bearingline 36.675 -4.44 90.0 1000.0 "1000 Meter" scalebar-1000
+# Scale bar: Use lat and long of the map on 90° over 1000 meters
+# ./printmaps bearingline 36.675 -4.44 90.0 1000.0 "1000 Meter" scalebar-1000
 #
 # Grid labels
-# printmaps runlua gridlabels.lua
+# ./printmaps runlua gridlabels.lua | sed 1,6d >> map.yaml 
 #
 # How to use the compass with the computer monitor
 # Use deepin viewer at 41% zoom (about 1 or two scrolls after 40%)
@@ -315,3 +314,78 @@ UserObjects:
 #  WellKnownText: POINT(10.0 297)
 
 # lua grid line labels
+
+
+# lon grid values (increment 19.68)
+# ---------------------------------
+
+- Style: <TextSymbolizer fontset-name='fontset-0' size='12' fill='dimgray' allow-overlap='true'>'-4.45°'</TextSymbolizer>
+  WellKnownText: POINT(27.15 15.5)
+
+- Style: <TextSymbolizer fontset-name='fontset-0' size='12' fill='dimgray' allow-overlap='true'>'-4.44°'</TextSymbolizer>
+  WellKnownText: POINT(46.83 15.5)
+
+- Style: <TextSymbolizer fontset-name='fontset-0' size='12' fill='dimgray' allow-overlap='true'>'-4.43°'</TextSymbolizer>
+  WellKnownText: POINT(66.51 15.5)
+
+- Style: <TextSymbolizer fontset-name='fontset-0' size='12' fill='dimgray' allow-overlap='true'>'-4.42°'</TextSymbolizer>
+  WellKnownText: POINT(86.19 15.5)
+
+- Style: <TextSymbolizer fontset-name='fontset-0' size='12' fill='dimgray' allow-overlap='true'>'-4.41°'</TextSymbolizer>
+  WellKnownText: POINT(105.87 15.5)
+
+- Style: <TextSymbolizer fontset-name='fontset-0' size='12' fill='dimgray' allow-overlap='true'>'-4.40°'</TextSymbolizer>
+  WellKnownText: POINT(125.55 15.5)
+
+- Style: <TextSymbolizer fontset-name='fontset-0' size='12' fill='dimgray' allow-overlap='true'>'-4.39°'</TextSymbolizer>
+  WellKnownText: POINT(145.23 15.5)
+
+- Style: <TextSymbolizer fontset-name='fontset-0' size='12' fill='dimgray' allow-overlap='true'>'-4.38°'</TextSymbolizer>
+  WellKnownText: POINT(164.91 15.5)
+
+- Style: <TextSymbolizer fontset-name='fontset-0' size='12' fill='dimgray' allow-overlap='true'>'-4.37°'</TextSymbolizer>
+  WellKnownText: POINT(184.59 15.5)
+
+- Style: <TextSymbolizer fontset-name='fontset-0' size='12' fill='dimgray' allow-overlap='true'>'-4.36°'</TextSymbolizer>
+  WellKnownText: POINT(204.27 15.5)
+
+- Style: <TextSymbolizer fontset-name='fontset-0' size='12' fill='dimgray' allow-overlap='true'>'-4.35°'</TextSymbolizer>
+  WellKnownText: POINT(223.95 15.5)
+
+- Style: <TextSymbolizer fontset-name='fontset-0' size='12' fill='dimgray' allow-overlap='true'>'-4.34°'</TextSymbolizer>
+  WellKnownText: POINT(243.63 15.5)
+
+- Style: <TextSymbolizer fontset-name='fontset-0' size='12' fill='dimgray' allow-overlap='true'>'-4.33°'</TextSymbolizer>
+  WellKnownText: POINT(263.31 15.5)
+
+# lat grid values (increment 19.68)
+# ---------------------------------
+
+- Style: <TextSymbolizer fontset-name='fontset-0' size='12' fill='dimgray' allow-overlap='true'>'36.66°'</TextSymbolizer>
+  WellKnownText: POINT(15.0 27.15)
+
+- Style: <TextSymbolizer fontset-name='fontset-0' size='12' fill='dimgray' allow-overlap='true'>'36.67°'</TextSymbolizer>
+  WellKnownText: POINT(15.0 46.83)
+
+- Style: <TextSymbolizer fontset-name='fontset-0' size='12' fill='dimgray' allow-overlap='true'>'36.68°'</TextSymbolizer>
+  WellKnownText: POINT(15.0 66.51)
+
+- Style: <TextSymbolizer fontset-name='fontset-0' size='12' fill='dimgray' allow-overlap='true'>'36.69°'</TextSymbolizer>
+  WellKnownText: POINT(15.0 86.19)
+
+- Style: <TextSymbolizer fontset-name='fontset-0' size='12' fill='dimgray' allow-overlap='true'>'36.70°'</TextSymbolizer>
+  WellKnownText: POINT(15.0 105.87)
+
+- Style: <TextSymbolizer fontset-name='fontset-0' size='12' fill='dimgray' allow-overlap='true'>'36.71°'</TextSymbolizer>
+  WellKnownText: POINT(15.0 125.55)
+
+- Style: <TextSymbolizer fontset-name='fontset-0' size='12' fill='dimgray' allow-overlap='true'>'36.72°'</TextSymbolizer>
+  WellKnownText: POINT(15.0 145.23)
+
+- Style: <TextSymbolizer fontset-name='fontset-0' size='12' fill='dimgray' allow-overlap='true'>'36.73°'</TextSymbolizer>
+  WellKnownText: POINT(15.0 164.91)
+
+- Style: <TextSymbolizer fontset-name='fontset-0' size='12' fill='dimgray' allow-overlap='true'>'36.74°'</TextSymbolizer>
+  WellKnownText: POINT(15.0 184.59)
+
+
