@@ -53,29 +53,49 @@ TODOs:
 - swap "UserObjects" and "UserFiles" so "UserObjects" is at the END of the file
 
 ** Setting up margins
+#+NAME: srcCodeA
 #+begin_src bash
-  VALUE=./printmaps passepartout 297.0 210.0 20.0 20.0 20.0 20.0 | sed '1,6d' | sed -n '1p'
-  $ FRAME=$(cat <<EOF
+  VALUE=$(./printmaps passepartout 297.0 210.0 20.0 20.0 20.0 20.0 | sed '1,6d' | sed -n '1p')
+  FRAME=$(cat <<EOF
   # frame
   - Style: <PolygonSymbolizer fill='white' fill-opacity='1.0' />
     WellKnownText: $VALUE
   EOF
   )
+  echo $VALUE
   echo $FRAME
 #+end_src
 
+#+RESULTS: srcCodeA
+| POLYGON((0.0 0.0                                                                                       | 0.0 210.0 | 297.0 210.0 | 297.0 0.0 | 0.0 0.0) | (20.0 20.0 | 20.0 190.0 | 277.0 190.0 | 277.0 20.0 | 20.0 20.0)) |
+| # frame - Style: <PolygonSymbolizer fill='white' fill-opacity='1.0' /> WellKnownText: POLYGON((0.0 0.0 | 0.0 210.0 | 297.0 210.0 | 297.0 0.0 | 0.0 0.0) | (20.0 20.0 | 20.0 190.0 | 277.0 190.0 | 277.0 20.0 | 20.0 20.0)) |
+
+#+RESULTS:
+| POLYGON((0.0 0.0                                                                                       | 0.0 210.0 | 297.0 210.0 | 297.0 0.0 | 0.0 0.0) | (20.0 20.0 | 20.0 190.0 | 277.0 190.0 | 277.0 20.0 | 20.0 20.0)) |
+| # frame - Style: <PolygonSymbolizer fill='white' fill-opacity='1.0' /> WellKnownText: POLYGON((0.0 0.0 | 0.0 210.0 | 297.0 210.0 | 297.0 0.0 | 0.0 0.0) | (20.0 20.0 | 20.0 190.0 | 277.0 190.0 | 277.0 20.0 | 20.0 20.0)) |
+
 Only use the first value of the passepartout command or copy the command above
 
-#+begin_src bash
-  VALUE=$(printmaps passepartout 297.0 210.0 20.0 20.0 20.0 20.0 | sed '1,6d' | sed -n '5p')
-  $ BORDER=$(cat <<EOF
+#+begin_src bash :results output :exports both :noweb yes
+  <<<srcCodeA>>>
+  VALUE=$(./printmaps passepartout 297.0 210.0 20.0 20.0 20.0 20.0 | sed '1,6d' | sed -n '5p')
+  BORDER=$(cat <<EOF
   # border (around map area)
   - Style: <LineSymbolizer stroke='dimgray' stroke-width='1.0' stroke-linecap='square' />
     WellKnownText: $VALUE
   EOF
   )
+  echo $VALUE
+  echo $FRAME
   echo $BORDER
 #+end_src
+
+#+RESULTS:
+: POLYGON((0.0 0.0, 0.0 210.0, 297.0 210.0, 297.0 0.0, 0.0 0.0), (20.0 20.0, 20.0 190.0, 277.0 190.0, 277.0 20.0, 20.0 20.0))
+: # frame - Style: <PolygonSymbolizer fill='white' fill-opacity='1.0' /> WellKnownText: POLYGON((0.0 0.0, 0.0 210.0, 297.0 210.0, 297.0 0.0, 0.0 0.0), (20.0 20.0, 20.0 190.0, 277.0 190.0, 277.0 20.0, 20.0 20.0))
+: LINESTRING(20.0 20.0, 20.0 190.0, 277.0 190.0, 277.0 20.0, 20.0 20.0)
+: # frame - Style: <PolygonSymbolizer fill='white' fill-opacity='1.0' /> WellKnownText: POLYGON((0.0 0.0, 0.0 210.0, 297.0 210.0, 297.0 0.0, 0.0 0.0), (20.0 20.0, 20.0 190.0, 277.0 190.0, 277.0 20.0, 20.0 20.0))
+: # border (around map area) - Style: <LineSymbolizer stroke='dimgray' stroke-width='1.0' stroke-linecap='square' /> WellKnownText: LINESTRING(20.0 20.0, 20.0 190.0, 277.0 190.0, 277.0 20.0, 20.0 20.0)
 
 Only use the last value of the passepartout command or copy the command above
 
@@ -181,10 +201,15 @@ It is important that the "UserObjects" is at the END of the file for the pipe to
   ./download
 #+end_src
 
+** COMMENT babel settings
+
 #+STARTUP: indent
 # Local Variables:
 # mode: org
 # eval: (flyspell-mode 1)
 # ispell-local-dictionary: "en_US"
 # eval: (flyspell-buffer)
+# org-babel-noweb-wrap-start: "<<<"
+# org-babel-noweb-wrap-end: ">>>"
+# org-confirm-babel-evaluate: nil
 # End:
